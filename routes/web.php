@@ -25,6 +25,7 @@ Route::get('create-employee',function(){
 });
 
 // Route::post('get-employee',[UserController::class,'login'])->name('get-employee');
-Route::get('get-employee',function(){
-    return view('viewEmployee');
-});
+Route::get('get-employee',[EmployeeController::class,'get_employees']);
+
+Route::get('/employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+Route::delete('/employee/{id}', [EmployeeController::class, 'destroy'])->name('employee.delete');

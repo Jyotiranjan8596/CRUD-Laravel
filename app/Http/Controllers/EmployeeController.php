@@ -27,4 +27,13 @@ class EmployeeController extends Controller
             }
         }
     }
+
+    public function get_employees(){
+        $employees= Employee::all();
+        if($employees){
+            return view('viewEmployee',['employees' => $employees]);
+        }else{
+            return redirect()->route('get.employee')->with('message','No data found');
+        }
+    }
 }
