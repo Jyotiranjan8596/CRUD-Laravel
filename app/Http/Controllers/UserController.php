@@ -42,8 +42,9 @@ class UserController extends Controller
         }else{
             $user = User::where('email',$request->email)->first();
             if($user){
+                // dd(Hash::check($request->password, $user->password));
                 if(Hash::check($request->password, $user->password)){
-                    return redirect()->route('login')->with('message',"User is not registered");
+                    return redirect()->route('get.employee')->with('message',"User is not registered");
                 }
             }else{
                 return redirect()->route('register')->with('message',"User is not registered");

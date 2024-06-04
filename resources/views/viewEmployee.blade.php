@@ -98,8 +98,11 @@
                         <td>{{$employee['phone']}}</td>
                         <td>{{$employee['gender']}}</td>
                         <td class="action-buttons">
-                            <a href="{{ route('employee.edit', ['id' => 1]) }}" class="btn btn-update">Update</a>
-                            <form action="{{ route('employee.delete', ['id' => 1]) }}" method="POST" style="display: inline;">
+                            <a href="{{ route('get.employee.by.id', ['id' => $employee['id']]) }}" class="btn btn-update">Update</a>
+                            <!-- <a href="{{ route('get.employee.by.id', ['id' => $employee['id']]) }}" class="btn btn-delete">Delete</a> -->
+
+
+                            <form action="{{ route('employee.delete', ['id' =>  $employee['id']]) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-delete">Delete</button>
@@ -110,6 +113,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <a href="{{ route('create-employee')}}" class="btn btn-update">Add</a>
+            <a href="{{ route('login')}}" class="btn btn-update">Logout</a>
+
         </div>
     </div>
 </body>
